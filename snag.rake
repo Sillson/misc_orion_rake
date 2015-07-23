@@ -9,7 +9,7 @@ namespace :clean do
 					i.save
 				end
 			end
-			@nav_setting = (loc.website.widgets.find_by garden_widget_id: 35).navigation.object
+			@nav_setting = (GardenWidget.find_by name: "Navigation").navigation.object
 			updated_value = @nav_setting.value.each {|k,v| v.update(:child_templates => {})}
 			@nav_setting.update_attributes(:value => updated_value)
 		end
